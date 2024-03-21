@@ -19,8 +19,6 @@ public class Task {
     private String title;
     private String description;
     private boolean isCompleted;
-    @ManyToOne
-    private User user_id;
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }

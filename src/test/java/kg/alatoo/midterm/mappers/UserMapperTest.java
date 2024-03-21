@@ -2,28 +2,29 @@ package kg.alatoo.midterm.mappers;
 
 import kg.alatoo.midterm.DTO.UserDTO;
 import kg.alatoo.midterm.entity.User;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
-
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class UserMapperTest {
 
-    private final UserMapper userMapper = Mappers.getMapper(UserMapper.class);
+    private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @Test
-    public void testToUserDTO() {
-        // Given
+    public void testUserToUserDTO() {
         User user = new User();
         user.setId(1L);
-        user.setName("Test User");
+        user.setName("John");
 
-        // When
-        UserDTO userDTO = userMapper.toUserDTO(user);
+        UserDTO userDTO = userMapper.userToUserDTO(user);
 
-        // Then
-        assertThat(userDTO).isNotNull();
-        assertThat(userDTO.getId()).isEqualTo(1L);
-        assertThat(userDTO.getName()).isEqualTo("Test User");
+        assertThat(userDTO.getId()).isEqualTo(user.getId());
+        assertThat(userDTO.getName()).isEqualTo(user.getName());
     }
+
 }

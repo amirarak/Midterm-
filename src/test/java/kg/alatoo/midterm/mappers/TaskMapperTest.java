@@ -1,31 +1,32 @@
 package kg.alatoo.midterm.mappers;
 
-import kg.alatoo.midterm.DTO.TaskDTO;
 import kg.alatoo.midterm.entity.Task;
-import org.junit.jupiter.api.Test;
+import kg.alatoo.midterm.DTO.TaskDTO;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mapstruct.factory.Mappers;
-
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TaskMapperTest {
 
-    private final TaskMapper taskMapper = Mappers.getMapper(TaskMapper.class);
+    private TaskMapper taskMapper = Mappers.getMapper(TaskMapper.class);
 
     @Test
-    public void testToTaskDTO() {
-        // Given
+    public void testTaskToTaskDTO() {
         Task task = new Task();
-        task.setId(1L);
-        task.setTitle("Test Task");
-        task.setDescription("Description for Test Task");
+        task.setTitle("Task 1");
+        task.setDescription("Description for Task 1");
         task.setCompleted(false);
 
-        // When
-        TaskDTO taskDTO = taskMapper.toTaskDTO(task);
+        TaskDTO taskDTO = taskMapper.taskToTaskDTO(task);
 
-        // Then
-        assertThat(taskDTO).isNotNull();
-        assertThat(taskDTO.getId()).isEqualTo(1L);
-        assertThat(taskDTO.getTitle()).isEqualTo("Test Task");
+        assertThat(taskDTO.getTitle()).isEqualTo(task.getTitle());
+        assertThat(taskDTO.getDescription()).isEqualTo(task.getDescription());
+        assertThat(taskDTO.isCompleted()).isEqualTo(task.isCompleted());
     }
+
 }

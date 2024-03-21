@@ -35,13 +35,13 @@ public class TaskController {
 
     @PostMapping
     public ResponseEntity<Task> createTask(@RequestBody Task task) {
-        User user = task.getUser(); // Get user object from the task
+        User user = task.getUser();
         if (user != null) {
-            Long userId = user.getId(); // Get user ID
-            User fetchedUser = userService.getUserById(userId); // Fetch user by ID
+            Long userId = user.getId();
+            User fetchedUser = userService.getUserById(userId);
             if (fetchedUser != null) {
-                task.setUser(fetchedUser); // Set user in the task
-                Task savedTask = taskService.save(task); // Save the task
+                task.setUser(fetchedUser);
+                Task savedTask = taskService.save(task);
                 return ResponseEntity.status(HttpStatus.CREATED).body(savedTask);
             }
         }
@@ -52,14 +52,14 @@ public class TaskController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
-        User user = task.getUser(); // Получаем объект пользователя из задачи
+        User user = task.getUser();
         if (user != null) {
-            Long userId = user.getId(); // Получаем ID пользователя
-            User fetchedUser = userService.getUserById(userId); // Получаем пользователя по ID
+            Long userId = user.getId();
+            User fetchedUser = userService.getUserById(userId);
             if (fetchedUser != null) {
-                task.setUser(fetchedUser); // Устанавливаем пользователя в задаче
-                task.setTaskId(id); // Устанавливаем ID задачи
-                Task updatedTask = taskService.save(task); // Сохраняем обновленную задачу
+                task.setUser(fetchedUser);
+                task.setTaskId(id);
+                Task updatedTask = taskService.save(task);
                 return ResponseEntity.ok(updatedTask);
             }
         }

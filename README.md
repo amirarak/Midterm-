@@ -1,3 +1,7 @@
+Link to the video demonstration: https://t.me/backendmidterm 
+
+
+
 **Project: Task Manager Application**
 
 **Description:**

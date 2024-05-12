@@ -1,12 +1,17 @@
 package kg.alatoo.midterm.service;
 
+import kg.alatoo.midterm.DTO.TaskDTO;
+import kg.alatoo.midterm.DTO.UserDTO;
 import kg.alatoo.midterm.entity.Task;
+import kg.alatoo.midterm.entity.User;
+import kg.alatoo.midterm.mappers.TaskMapper;
 import kg.alatoo.midterm.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
@@ -14,9 +19,13 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
     @Autowired
-    private UserService userService;
-    public List<Task> listAll() {
-        return taskRepository.findAll();
+    private TaskMapper taskMapper;
+
+    public List<TaskDTO> listAll() {
+        List<Task> users = taskRepository.findAll();
+        return users.stream()
+                .map(taskMapper::taskToTaskDTO)
+                .collect(Collectors.toList());
     }
 
     public List<Task> listByUser(Long id) {

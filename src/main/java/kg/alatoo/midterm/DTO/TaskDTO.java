@@ -12,6 +12,5 @@ public class TaskDTO {
     private String title;
     private String description;
     private boolean isCompleted;
-    private Long userId;
-    private String userName;
+    private String userId;
 }

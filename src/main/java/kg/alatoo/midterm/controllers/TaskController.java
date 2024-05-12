@@ -1,5 +1,6 @@
 package kg.alatoo.midterm.controllers;
 
+import kg.alatoo.midterm.DTO.TaskDTO;
 import kg.alatoo.midterm.entity.Task;
 import kg.alatoo.midterm.entity.User;
 import kg.alatoo.midterm.service.TaskService;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tasks")
+@RequestMapping("/api/v1/tasks")
 public class TaskController {
 
     private final TaskService taskService;
@@ -23,7 +24,7 @@ public class TaskController {
     }
 
     @GetMapping
-    public List<Task> getAllTasks() {
+    public List<TaskDTO> getAllTasks() {
         return taskService.listAll();
     }
 

@@ -14,5 +14,5 @@ import java.util.List;
 public class UserDTO {
     private Long id;
     private String name;
-    private List<Long> taskIds;
+    private String username;
 }

@@ -1,5 +1,6 @@
 package kg.alatoo.midterm.controllers;
 
+import kg.alatoo.midterm.DTO.UserDTO;
 import kg.alatoo.midterm.entity.User;
 import kg.alatoo.midterm.service.UserService;
 import org.springframework.http.HttpStatus;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     private final UserService userService;
@@ -19,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
 

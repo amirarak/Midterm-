@@ -21,15 +21,4 @@ public class Task {
 
     @ManyToOne
     private User user;
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "taskId=" + taskId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", isCompleted=" + isCompleted +
-                ", user=" + user +
-                '}';
-    }
 }

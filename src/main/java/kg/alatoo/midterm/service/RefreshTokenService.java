@@ -21,6 +21,7 @@ public class RefreshTokenService {
     @Autowired
     UserRepository userRepository;
 
+
     public RefreshToken createRefreshToken(String username){
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new NoSuchElementException("No user found with username: " + username));

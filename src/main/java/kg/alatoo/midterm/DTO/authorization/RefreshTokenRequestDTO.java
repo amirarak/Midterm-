@@ -1,5 +1,6 @@
 package kg.alatoo.midterm.DTO.authorization;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
